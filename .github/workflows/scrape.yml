@@ -1,0 +1,30 @@
+name: 'Table Sums - 24f1002043@ds.study.iitm.ac.in'
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  scrape-tables:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 'Checkout code for 24f1002043@ds.study.iitm.ac.in'
+      uses: actions/checkout@v4
+
+    - name: 'Setup Node.js for 24f1002043@ds.study.iitm.ac.in'
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: 'Install npm dependencies for 24f1002043@ds.study.iitm.ac.in'
+      run: npm ci
+
+    - name: 'Install Playwright browsers for 24f1002043@ds.study.iitm.ac.in'
+      run: npx playwright install --with-deps
+
+    - name: '🚀 Scrape & Sum Tables - 24f1002043@ds.study.iitm.ac.in'
+      run: node scrape.js
